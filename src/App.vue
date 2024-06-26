@@ -1,6 +1,11 @@
+<script setup lang="ts">
+import { RouterView } from 'vue-router';
+</script>
+
 <template>
   <div>
-    <router-view /> 
+    <!-- 渲染组件 -->
+    <RouterView /> 
   </div>
 </template>
 
@@ -14,7 +19,7 @@ import HomePage from '@/pages/HomePage.vue'
 #app {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  color: #eddede;
+  color: #000000;
 
   /* 设置背景色为白色 */  
   background-color: white;  
