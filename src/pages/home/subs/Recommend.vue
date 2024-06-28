@@ -1,18 +1,25 @@
 <template> 
   推荐页
   <button @click="setLogin">点击执行 xxx 逻辑</button>
+  <p> {{ isLogin }} </p>
 </template>
 
 <script lang="ts" setup>
+import { ref, watch } from 'vue';
+import { userStore } from '@/store/user';
+const user = userStore()
 
-import { UserStore } from '@/store/user';
-const user = UserStore()
+const isLogin = ref(user.isLogin)
+
+watch(() => user.isLogin, (newVal) => {  
+  isLogin.value = newVal;  
+}); 
 
 const setLogin = () => {
-  if (user.GetUserLoginFlag) {
-    user.SetUserLoginFlag(false)
+  if (user.getUserLoginFlag) {
+    user.setUserLoginFlag(false)
   } else {
-    user.SetUserLoginFlag(true)
+    user.setUserLoginFlag(true)
   }
 }
 

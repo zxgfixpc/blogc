@@ -1,4 +1,5 @@
 import { ShowType } from '@/consts/consts'
+import { userStore } from '@/store/user';
 
 const homeRouter = {
   path:'/home',
@@ -86,10 +87,10 @@ const homeRouter = {
         },
         {
           path: 'exit',
-          redirect: '/home',
           meta: {
             title: "退出",
             showType: ShowType.ShowOnlyLogin,
+            isClick: true,
             allPath: '/home/user/exit',
             logo: ''
           }

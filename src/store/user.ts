@@ -1,23 +1,23 @@
 import { defineStore } from 'pinia'
 
-export const UserStore = defineStore("UserStore", {
+export const userStore = defineStore("UserStore", {
   actions:{
-    SetUserLoginFlag(value:boolean) {
+    setUserLoginFlag(value:boolean) {
       this.isLogin = value
     },
-    SetUserInfo(name:string, avator:string) {
+    setUserInfo(name:string, avator:string) {
       this.username = name
       this.avator = avator
     }
   },
   getters:{
-    GetUserLoginFlag():boolean {
+    getUserLoginFlag():boolean {
       return this.isLogin
     },
-    GetUserName():string {
+    getUserName():string {
       return this.username 
     },
-    GetUserAvator():string {
+    getUserAvator():string {
       return this.avator 
     }
   },
