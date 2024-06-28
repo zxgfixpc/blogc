@@ -7,9 +7,6 @@ function login(name:string, password:string) :boolean {
   
   
   console.log("======== get cookie :", Cookie.getCookie(Cookie.sessionKey))
-  setTimeout(() => {  
-    console.log('延时后的消息')
-  }, 20000)
 
   window.location.replace('/home')
 
