@@ -13,8 +13,12 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@kangc/v-md-editor": "^2.3.18",
     "element-plus": "^2.7.5",
+    "markdown-it": "^14.1.0",
+    "mavon-editor": "^3.0.1",
     "pinia": "^2.1.7",
+    "prismjs": "^1.29.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
