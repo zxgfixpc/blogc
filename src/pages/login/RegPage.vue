@@ -3,19 +3,41 @@
           <div class="login-wrapper">
               <div class="header">Register</div>
               <div class="form-wrapper">
-                  <input type="text" name="username" placeholder="账户" class="input-item">
-                  <input type="password" name="password" placeholder="密码" class="input-item">
-                  <input type="password" name="repassword" placeholder="再次确认密码" class="input-item">
-                  <div class="btn">Register</div>
+                  <input type="text" v-model="username" placeholder="账户" class="input-item">
+                  <input type="password" v-model="password" placeholder="密码" class="input-item">
+                  <input type="password" v-model="repassword" placeholder="再次确认密码" class="input-item">
+                  <div class="btn" @click="submitReg">注册</div>
+                  <div class="btn" @click="toLoginPage">去登录</div>
               </div>
           </div>
       </div>
 </template>
   
-<script>
-  export default {
-      name:"Reg"
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus'
+import loginObj from './login';
+import { ref } from 'vue';
+
+const router = useRouter();  
+const toLoginPage = () => {  
+    router.push('/login')
+}; 
+
+const username = ref()
+const password = ref()
+const repassword = ref()
+
+function submitReg() {
+  if (password.value !== repassword.value) {
+    ElMessage({
+      message: '密码校验失败，请重新输入密码',
+      type: 'warning',
+      plain: true,
+    })
+    return
   }
+}
 </script>
 
 <style scoped>
@@ -68,8 +90,8 @@ body {
   margin-top: 40px;
   background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
   color: #fff;
-  margin: 0 auto;
 }
+
 .msg {
   text-align: center;
   line-height: 88px;

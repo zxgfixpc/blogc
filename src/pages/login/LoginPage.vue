@@ -6,7 +6,7 @@
                     <input type="text" v-model="username" placeholder="账户" class="input-item">
                     <input type="password" v-model="password" placeholder="密码" class="input-item">
                     <div class="btn" @click="submitLogin">登录</div>
-                    <div class="btn" @click="toRegPage">注册</div>
+                    <div class="btn" @click="toRegPage">去注册</div>
                 </div>
             </div>
         </div>
@@ -26,7 +26,6 @@ const username = ref()
 const password = ref()
 
 function submitLogin() {
-    console.log("============", username.value, password.value)
     loginObj.login(username.value, password.value)
 }
 

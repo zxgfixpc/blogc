@@ -1,9 +1,10 @@
 const sessionKey = "BLOG_SESSION_ID"
 
-/**  
- * @description 保存cookie   
- * @param {number} days 默认存储多少天  
- */  
+/*
+ * cookie中判断是一个cookie，需要判断name domain path是否都相同，所以在设置path时，统一为'/'
+ */
+
+// 设置cookie 
 function setCookie(key:string, val:string, days: number) {  
   // 设置过期时间  
   let expire = new Date(  
@@ -12,11 +13,7 @@ function setCookie(key:string, val:string, days: number) {
   document.cookie = `${key}=${val}; expires=${expire}; path=/`;  
 }  
 
-/**   
-* @description 获取cookie  
-* @param {string} name 需要获取cookie的key  
-* @returns {string | null} 返回cookie的值或者null  
-*/  
+// 获取cookie 
 function getCookie(name: string): string | null {  
   const arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));  
   if (arr != null) {  
@@ -27,14 +24,9 @@ function getCookie(name: string): string | null {
   }  
 }  
 
-/**   
-* @description 删除cookie  
-* @param {string} key 需要删除cookie的key  
-*/  
+// 清除cookie
 function clearCookie(key: string) {  
-  console.log(key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;') 
-  document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-  console.log("======== clearCookie: ", document.cookie)
+  document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/'
 }  
 
 export default { 

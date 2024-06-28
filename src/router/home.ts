@@ -1,5 +1,4 @@
 import { ShowType } from '@/consts/consts'
-import { userStore } from '@/store/user';
 
 const homeRouter = {
   path:'/home',

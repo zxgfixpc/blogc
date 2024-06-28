@@ -1,17 +1,12 @@
-<script setup lang="ts">
-import { RouterView } from 'vue-router';
-</script>
-
 <template>
   <div>
-    <!-- 渲染组件 -->
-    <RouterView /> 
+    <RouterView /> <!-- 渲染组件 -->
   </div>
 </template>
 
-<!-- <script setup lang="ts">
-import HomePage from '@/pages/HomePage.vue'
-</script> -->
+<script setup lang="ts">
+import { RouterView } from 'vue-router';
+</script>
 
 <style>
 @import './style/common.scss';

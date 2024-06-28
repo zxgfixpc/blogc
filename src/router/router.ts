@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/pages/home/HomePage.vue'
 import LoginPage from '@/pages/login/LoginPage.vue'
 import RegPage from '@/pages/login/RegPage.vue'
 import NotFoundPage from '@/pages/404/NotFoundPage.vue'
@@ -36,9 +35,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  handleUserStore()
+  handleCookieLoginUpdate()
 
-  // 如果跳转的页面不存在，跳转到404页面
+  // 如果跳转的页面不存在，跳转到首页
   if(to.matched.length===0){
     next('/home')
     return
@@ -53,20 +52,19 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-function handleUserStore() {
+// 登录cookie变更，将用户的登录信息Set到userStore中
+function handleCookieLoginUpdate() {
   let sessionKey = cookie.getCookie(cookie.sessionKey)
-  console.log("============router cookie: ", sessionKey, document.cookie)
   let user = userStore()
 
   if (sessionKey != null && sessionKey != "" && !user.getUserLoginFlag) {
     user.setUserLoginFlag(true)
-    console.log("============set router loginFlag: ", user.isLogin)
   } else if ((sessionKey == "" || sessionKey == null)&& user.getUserLoginFlag) {
     user.setUserLoginFlag(false)
-    console.log("============set router loginFlag: ", user.isLogin)
   }
 }
 
+// 处理用户退出
 function handleExit() {
   // 清理cookie
   cookie.clearCookie(cookie.sessionKey)
