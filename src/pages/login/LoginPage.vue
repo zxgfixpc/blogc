@@ -43,10 +43,10 @@ body {
     /* margin-top: 5%; */
     height: 980px;
     width: 100%;
-    background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+    background-image: linear-gradient(to right, #e8e9ea, #e8e9ea); 
 }
 .login-wrapper {
-    background-color: #fff;
+    background-color: #cde5f0;
     width: 358px;
     height: 588px;
     border-radius: 15px;
@@ -62,6 +62,11 @@ body {
     text-align: center;
     line-height: 200px;
 }
+.form-wrapper {  
+    display: flex;  
+    flex-direction: column;   
+    align-items: center; /* 水平居中（但在这里不需要）*/   
+} 
 .input-item {
     display: block;
     width: 100%;
@@ -72,16 +77,15 @@ body {
     font-size: 15px;
     outline: none;
 }
-.input-item:placeholder {
+.input-item::placeholder {
     text-transform: uppercase;
 }
 .btn {
     text-align: center;
     padding: 10px;
-    margin: 0 auto;
     width: 100%;
     margin-top: 40px;
-    background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+    background-image: linear-gradient(to right, #a4c1f5, #a4c1f5);
     color: #fff;
 }
 .msg {

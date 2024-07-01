@@ -51,10 +51,10 @@ body {
   /* margin-top: 5%; */
   height: 980px;
   width: 100%;
-  background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+  background-image: linear-gradient(to right, #e8e9ea, #e8e9ea); 
 }
 .login-wrapper {
-  background-color: #fff;
+  background-color: #cde5f0;
   width: 358px;
   height: 588px;
   border-radius: 15px;
@@ -64,6 +64,11 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+.form-wrapper {  
+    display: flex;  
+    flex-direction: column;   
+    align-items: center; /* 水平居中（但在这里不需要）*/   
+} 
 .header {
   font-size: 38px;
   font-weight: bold;
@@ -88,7 +93,7 @@ body {
   padding: 10px;
   width: 100%;
   margin-top: 40px;
-  background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+  background-image: linear-gradient(to right, #a4c1f5, #a4c1f5); 
   color: #fff;
 }
 
