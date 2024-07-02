@@ -14,8 +14,10 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
-import loginObj from './login';
+import { ElMessage } from 'element-plus'
+import loginObj from '@/api/login';
 import { ref } from 'vue';
+import axios from 'axios';
 
 const router = useRouter();  
 const toRegPage = () => {  
@@ -26,7 +28,29 @@ const username = ref()
 const password = ref()
 
 function submitLogin() {
-    loginObj.login(username.value, password.value)
+    loginObj.login(username.value, password.value).then(ret => {
+    console.log("reg page ret:", ret)
+    if (!ret.ok) {
+        ElMessage({
+        message: ret.msg,
+        type: 'error',
+        plain: true,
+        })  
+    } else {
+        ElMessage({
+        message: '登录成功',
+        type: 'warning',
+        plain: true,
+        })  
+        window.location.replace('/home')
+    }
+    }).catch(error => {  
+    ElMessage({
+        message: error,
+        type: 'error',
+        plain: true,
+    })  
+    })
 }
 
 </script>

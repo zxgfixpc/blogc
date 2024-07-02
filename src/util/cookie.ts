@@ -1,14 +1,41 @@
 const sessionKey = "BLOG_SESSION_ID"
+const userIDKey = "BLOG_USER_ID"
 
 /*
  * cookie中判断是一个cookie，需要判断name domain path是否都相同，所以在设置path时，统一为'/'
  */
 
+function setUserIDAndSessionID(userID:string, sessionID:string) {
+  setCookie(sessionKey, sessionID, 3)
+  setCookie(userIDKey, userID, 3)
+}
+
+function getUserID():string {
+  const userID = getCookie(userIDKey)
+  if (userID === null) {
+    return ""
+  }
+  return userID
+}
+
+function getSessionID():string {
+  const userID = getCookie(sessionKey)
+  if (userID === null) {
+    return ""
+  }
+  return userID
+}
+
+function clearUserIDAndSessionID() {
+  clearCookie(userIDKey)
+  clearCookie(sessionKey)
+}
+
 // 设置cookie 
-function setCookie(key:string, val:string, days: number) {  
+function setCookie(key:string, val:string, hour: number) {  
   // 设置过期时间  
   let expire = new Date(  
-      new Date().getTime() + days * 24 * 60 * 60 * 1000  
+      new Date().getTime() + hour * 3600 * 1000  
   ).toUTCString();  
   document.cookie = `${key}=${val}; expires=${expire}; path=/`;  
 }  
@@ -30,8 +57,8 @@ function clearCookie(key: string) {
 }  
 
 export default { 
-  sessionKey, 
-  setCookie,  
-  getCookie,  
-  clearCookie  
+  setUserIDAndSessionID, 
+  getUserID,  
+  getSessionID,  
+  clearUserIDAndSessionID  
 };

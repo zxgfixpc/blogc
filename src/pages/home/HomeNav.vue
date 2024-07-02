@@ -8,8 +8,11 @@
   >  
     <!-- Logo -->  
     <div>  
-      <img class="homeLogo" src="@/images/dudu.png" alt="logo" />  
-    </div>  
+      <img class="homeLogo" src="@/images/dudu.png" alt="logo" />
+    </div>
+    <div>  
+      Note
+    </div>   
   
     <!-- 中间部分填充 -->  
     <div class="flex-grow" />  
@@ -118,9 +121,7 @@ onMounted(() => {
 }) 
 
 function handleFunctionClick() {  
-  cookie.clearCookie(cookie.sessionKey)
-  console.log("exit ============ cookie:", cookie.getCookie(cookie.sessionKey))
-  console.log("exit ============ document cookie:", document.cookie)
+  cookie.clearUserIDAndSessionID()
   window.location.replace('/home/recommend-article-list')
 }
 

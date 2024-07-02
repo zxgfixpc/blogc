@@ -16,7 +16,12 @@ export default defineConfig({
     }
   },
   server: {
-    host: '0.0.0.0',
-    port: 8010
+    proxy: {
+      '/blogs': {
+        target: 'http://127.0.0.1:8090',   //代理接口
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/blogs/, '/blogs')
+      }
+    }
   }
 })

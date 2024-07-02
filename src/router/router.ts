@@ -54,7 +54,7 @@ router.beforeEach((to, from, next) => {
 
 // 登录cookie变更，将用户的登录信息Set到userStore中
 function handleCookieLoginUpdate() {
-  let sessionKey = cookie.getCookie(cookie.sessionKey)
+  let sessionKey = cookie.getSessionID()
   let user = userStore()
 
   if (sessionKey != null && sessionKey != "" && !user.getUserLoginFlag) {
@@ -67,7 +67,7 @@ function handleCookieLoginUpdate() {
 // 处理用户退出
 function handleExit() {
   // 清理cookie
-  cookie.clearCookie(cookie.sessionKey)
+  cookie.clearUserIDAndSessionID()
 
   window.location.reload();
 }

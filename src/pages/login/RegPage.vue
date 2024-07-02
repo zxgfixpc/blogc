@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { ElMessage } from 'element-plus'
-import loginObj from './login';
+import regObj from '@/api/login';
 import { ref } from 'vue';
 
 const router = useRouter();  
@@ -37,6 +37,29 @@ function submitReg() {
     })
     return
   }
+  regObj.register(username.value, password.value).then(ret => {
+    console.log("reg page ret:", ret)
+    if (!ret.ok) {
+      ElMessage({
+        message: ret.msg,
+        type: 'error',
+        plain: true,
+      })  
+    } else {
+      ElMessage({
+        message: '注册成功，请完善个人信息',
+        type: 'warning',
+        plain: true,
+      })  
+      window.location.replace('/home/user/usercenter')
+    }
+  }).catch(error => {  
+    ElMessage({
+        message: error,
+        type: 'error',
+        plain: true,
+    })  
+  })
 }
 </script>
 
