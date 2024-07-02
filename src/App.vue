@@ -12,12 +12,15 @@ import { RouterView } from 'vue-router';
 @import './style/common.scss';
 
 #app {
+  /* 默认字体 */ 
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+
+  /* 默认字体颜色 */
   color: #000000;
 
-  /* 设置背景色为白色 */  
-  background-color: white;  
+  /* 默认背景色 */  
+  background-color: rgb(255, 255, 255);  
 
    /* 占据整个视口 */  
   position: fixed;  

@@ -12,6 +12,8 @@ import '@kangc/v-md-editor/lib/style/base-editor.css';
 import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
 import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
 import Prism from 'prismjs';
 
 VueMarkdownEditor.use(vuepressTheme, {
@@ -26,5 +28,9 @@ app.use(ElementPlus)
 app.use(pinia)
 app.use(mavonEditor) 
 app.use(VueMarkdownEditor)
+
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 
 app.mount('#app')

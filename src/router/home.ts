@@ -13,7 +13,7 @@ const homeRouter = {
         title: "推荐",
         showType: ShowType.ShowAll,
         allPath: '/home/recommend-article-list',
-        logo: ''
+        icon: 'Notebook'
       }
     },
     {
@@ -23,7 +23,7 @@ const homeRouter = {
         title: "关注",
         showType: ShowType.ShowOnlyLogin,
         allPath: '/home/follow-article-list',
-        logo: ''
+        icon: 'Share'
       }
     },
     {
@@ -33,7 +33,7 @@ const homeRouter = {
         title: "消息",
         showType: ShowType.ShowOnlyLogin,
         allPath: '/home/message-list',
-        logo: ''
+        icon: 'ChatDotRound'
       }
     },
     {
@@ -43,7 +43,7 @@ const homeRouter = {
         title: "写文章",
         showType: ShowType.ShowOnlyLogin,
         allPath: '/home/edit',
-        logo: ''
+        icon: 'EditPen'
       }
     },
     {
@@ -53,7 +53,7 @@ const homeRouter = {
         title: "去登录",
         showType: ShowType.ShowOnlyNotLogin,
         allPath: '/home/login',
-        logo: ''
+        icon: 'Pointer'
       }
     },
     {
@@ -61,7 +61,7 @@ const homeRouter = {
       meta: {
         title: "用户",
         showType: ShowType.ShowOnlyLogin,
-        logo: ''
+        icon: 'User'
       },
       children: [
         {
@@ -71,7 +71,7 @@ const homeRouter = {
             title: "我的主页",
             showType: ShowType.ShowOnlyLogin,
             allPath: '/home/user/usercenter',
-            logo: ''
+            icon: 'Avatar'
           }
         },
         {
@@ -81,7 +81,7 @@ const homeRouter = {
             title: "关注列表",
             showType: ShowType.ShowOnlyLogin,
             allPath: '/home/user/follow-user',
-            logo: ''
+            icon: 'Operation'
           }
         },
         {
@@ -91,7 +91,7 @@ const homeRouter = {
             showType: ShowType.ShowOnlyLogin,
             isClick: true,
             allPath: '/home/user/exit',
-            logo: ''
+            icon: 'SwitchButton'
           }
         },
       ]

@@ -11,7 +11,7 @@
       <img class="homeLogo" src="@/images/dudu.png" alt="logo" />
     </div>
     <div>  
-      Note
+      <div class="homeLogoName">绿豆笔记</div>
     </div>   
   
     <!-- 中间部分填充 -->  
@@ -21,20 +21,23 @@
     <template v-for="(firstRouter, index) in navRouterObj.children" :key="index">
       <!-- 一级菜单 --> 
       <el-menu-item v-if="!firstRouter.children?.length && isShowMenu(firstRouter.meta.showType)" :index="firstRouter.meta.allPath">  
+        <el-icon><component :is="firstRouter.meta.icon"/></el-icon>
         {{ firstRouter.meta.title }}  
       </el-menu-item>  
   
       <!-- 二级菜单 -->
       <template v-if="firstRouter.children?.length && isShowMenu(firstRouter.meta.showType)">
         <el-sub-menu>  
-          <template #title> {{ firstRouter.meta.title }} </template>  
+          <template #title> <el-icon><component :is="firstRouter.meta.icon"/></el-icon> {{ firstRouter.meta.title }} </template>  
           <template v-for="(item, subIndex) in firstRouter.children" :key="subIndex">
             <!-- 二级页面路由 -->
             <el-menu-item v-if="!item.meta.isClick" :index="item.meta.allPath">  
+              <el-icon><component :is="item.meta.icon"/></el-icon>
               {{ item.meta.title }}  
             </el-menu-item>
             <!-- click处理 -->
             <el-menu-item v-if="item.meta.isClick" @click="handleFunctionClick">  
+              <el-icon><component :is="item.meta.icon"/></el-icon>
               {{ item.meta.title }}  
             </el-menu-item>
           </template>
@@ -139,25 +142,33 @@ function handleFunctionClick() {
   display: block; /* 确保图片被视为块级元素，这通常对于布局是有帮助的 */ 
 }
 
+.homeLogoName {
+  display: flex; /* 启用Flexbox */
+  height: 100%; /* 设置父元素的高度 */
+  place-items: center;
+  font-size: 17px;
+    
+  /* 设置文本颜色为绿色 */  
+  color: green;  
+    
+  /* 设置文本加粗 */  
+  font-weight: bold; 
+}
+
+.el-menu--horizontal {
+  color: rgb(77, 208, 77) !important;
+}
+
 .el-menu-item.is-active {  
-  background-color: #ecf5ff !important;   
+  background-color: #fbfdff !important;
+  border-bottom: 2px solid rgb(134, 210, 134) !important;  
+  color: rgb(77, 208, 77) !important;
 }
 
 .el-menu-item:hover {  
-  color: none !important;  
-  background-color: none !important; 
+  color: #fbfdff !important;  
+  background-color: #fbfdff !important; 
 } 
 
-
-
-/* .el-menu-item.is-active {  
-  background-color: rgb(110, 195, 84) !important;   
-}
-
-.el-menu-item:hover {  
-  color: #83e9fa !important;  
-  background-color: white !important; 
-} 
-*/
 
 </style>
