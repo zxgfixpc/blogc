@@ -1,6 +1,5 @@
 import cookie from "@/util/cookie";
 import service from "@/util/request";
-import axios from 'axios'; 
 import { SERVER_IP_PORT, LOGIN_PATH, REGISTER_PATH } from "./consts";
 
 async function login(name:string, password:string) {

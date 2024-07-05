@@ -1,7 +1,7 @@
 <template>  
   <el-menu  
     :default-active="activeIndex" 
-    class="el-menu-demo"  
+    class="el-menu-demo" 
     mode="horizontal"  
     :ellipsis="false"  
     :router="true"  
@@ -11,14 +11,14 @@
       <img class="homeLogo" src="@/images/dudu.png" alt="logo" />
     </div>
     <div>  
-      <div class="homeLogoName">绿豆笔记</div>
+      <div class="homeLogoName">小桔笔记</div>
     </div>   
   
     <!-- 中间部分填充 -->  
-    <div class="flex-grow" />  
+    <div class="homeFlexGrow" />  
   
     <!-- 使用 v-for 渲染菜单项 --> 
-    <template v-for="(firstRouter, index) in navRouterObj.children" :key="index">
+    <template class="homeMenu" v-for="(firstRouter, index) in navRouterObj.children" :key="index">
       <!-- 一级菜单 --> 
       <el-menu-item v-if="!firstRouter.children?.length && isShowMenu(firstRouter.meta.showType)" :index="firstRouter.meta.allPath">  
         <el-icon><component :is="firstRouter.meta.icon"/></el-icon>
@@ -131,7 +131,7 @@ function handleFunctionClick() {
 </script> 
 
 <style>
-.flex-grow {
+.homeFlexGrow {
   flex-grow: 1;
 }
 
@@ -147,28 +147,30 @@ function handleFunctionClick() {
   height: 100%; /* 设置父元素的高度 */
   place-items: center;
   font-size: 17px;
-    
   /* 设置文本颜色为绿色 */  
-  color: green;  
-    
+  color: rgb(0, 179, 0);  
   /* 设置文本加粗 */  
   font-weight: bold; 
 }
 
-.el-menu--horizontal {
-  color: rgb(77, 208, 77) !important;
-}
-
 .el-menu-item.is-active {  
   background-color: #fbfdff !important;
-  border-bottom: 2px solid rgb(134, 210, 134) !important;  
-  color: rgb(77, 208, 77) !important;
+  border-bottom: 2px solid rgb(0, 179, 0) !important;  
+  color: rgb(0, 179, 0) !important;
+  font-weight: bold; 
 }
 
 .el-menu-item:hover {  
-  color: #fbfdff !important;  
+  color: rgb(0, 179, 0) !important;  
   background-color: #fbfdff !important; 
 } 
 
+:root {  
+    --el-menu-active-color: rgb(0, 179, 0);   
+    --el-menu-hover-text-color:  rgb(0, 179, 0);
+    --el-menu-hover-bg-color: none;
+    --el-menu-icon-width: 20px;
+    --el-font-size-base: 15px;
+}
 
 </style>
