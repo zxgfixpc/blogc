@@ -1,28 +1,46 @@
 <template>
   <div>
-    <div v-for="article in articles" :key="article.id" class="article-card">
+    <div
+      v-for="article in articles"
+      :key="article.article_id"
+      class="article-card"
+    >
       <div class="author-info">
-        <img :src="article.avatar" alt="Author Avatar" class="avatar" />
+        <img
+          :src="article.avatar"
+          alt="Author Avatar"
+          class="avatar"
+        />
         <div class="author-details">
-          <span class="author-name">{{ article.username }}</span>
-          <span class="publish-time">{{ article.createTime }}</span>
+          <span class="author-name">{{ article.nick }}</span>
+          <span class="publish-time">{{ article.created_at }}</span>
         </div>
       </div>
       <div class="article-details">
-        <h3 class="article-title">{{ article.title }}</h3>
+        <h3
+          class="article-title"
+          @click="toArticleDetail(article.article_id)"
+        >{{ article.title }}</h3>
         <p class="article-info">{{ article.summary }}</p>
       </div>
       <div class="article-stats">
-        <span class="stat-item">查看数: {{ article.viewCount }}</span>
-        <span class="stat-item">点赞数: {{ article.likeCount }}</span>
-        <span class="stat-item">评论数: {{ article.commentCount }}</span>
+        <span class="stat-item">查看数: {{ article.view_count }}</span>
+        <span class="stat-item">点赞数: {{ article.like_count }}</span>
+        <span class="stat-item">评论数: {{ article.comment_count }}</span>
       </div>
     </div>
   </div>
 </template>
-<script setup>
-const props = defineProps(['articles']);
+
+<script setup lang="ts">
+const props = defineProps(['articles'])
+
+function toArticleDetail(articleID) {
+  const url = `/home/article-detail?id=${articleID}`
+  window.open(url, '_blank')
+}
 </script>
+
 <style scoped>
 .article-card {
   border: 1px solid #ddd;
@@ -78,6 +96,10 @@ const props = defineProps(['articles']);
   margin-bottom: 2px;
   font-size: 20px;
 }
+.article-title:hover {
+  text-decoration: underline;
+  color: #c61111;
+}
 
 .article-info {
   color: #555;
@@ -92,6 +114,6 @@ const props = defineProps(['articles']);
 }
 
 .stat-item {
-  margin-right: 12px; 
+  margin-right: 12px;
 }
 </style>
