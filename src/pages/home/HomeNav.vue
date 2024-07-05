@@ -14,9 +14,7 @@
         alt="logo"
       />
     </div>
-    <div>
-      <div class="homeLogoName">小桔笔记</div>
-    </div>
+    <div class="homeLogoName">小桔笔记</div>
 
     <!-- 中间部分填充 -->
     <div class="homeFlexGrow" />
@@ -48,9 +46,9 @@
       <!-- 二级菜单 -->
       <template v-if="firstRouter.children?.length && isShowMenu(firstRouter.meta.showType)">
         <el-sub-menu>
-          <template #title> <el-icon>
-              <component :is="firstRouter.meta.icon" />
-            </el-icon> {{ firstRouter.meta.title }} </template>
+          <template #title>
+            <el-avatar :src="getAvatar" />
+          </template>
           <template
             v-for="(item, subIndex) in firstRouter.children"
             :key="subIndex"
@@ -162,13 +160,14 @@ function handleFunctionClick() {
   cookie.clearUserIDAndSessionID()
   window.location.replace('/home/recommend-article-list')
 }
+
+const getAvatar = computed(() => {
+  console.log('===========', cookie.getAvatar())
+  return cookie.getAvatar()
+})
 </script> 
 
 <style>
-.homeFlexGrow {
-  flex-grow: 1;
-}
-
 .homeLogo {
   height: 100%; /* 图片的高度设置为父元素高度的100% */
   width: auto; /* 图片的宽度将自动调整以保持其原始的宽高比 */
@@ -185,6 +184,10 @@ function handleFunctionClick() {
   color: rgb(0, 179, 0);
   /* 设置文本加粗 */
   font-weight: bold;
+}
+
+.homeFlexGrow {
+  flex-grow: 1;
 }
 
 .el-menu-item.is-active {
